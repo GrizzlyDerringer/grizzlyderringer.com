@@ -9,11 +9,10 @@
 
     <div class="page-content">
       <div class="wrapper">
-
-        <h1>Grizzly Derringer</h1>
-        <h2>American<br><span>Dream</span></h2>
-
-        {% include playlist.html songs=site.data.playlist.songs %}
+        
+        {% for slide in site.slides %}
+          {{ slide.content }} <br>
+        {% endfor %}
 
         {% include player.html %}
       </div>
