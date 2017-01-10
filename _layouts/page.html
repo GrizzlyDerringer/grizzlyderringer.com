@@ -3,18 +3,41 @@
 
   {% include head.html %}
 
-  <body class="layout-onepage layout-onepage-american-dream">
-
-    {% include header.html %}
+  <body class="layout-onepage layout-onepage-american-dream">    
 
     <div class="page-content">
       <div class="wrapper">
         
-        {% for slide in site.slides %}
-          {{ slide.content }} <br>
-        {% endfor %}
+        <header id="myCarousel" class="carousel slide">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+              <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
 
-        {% include player.html %}
+          <!-- Wrapper for Slides -->
+          <div class="carousel-inner">
+              {% for slide in site.slides %}                
+                <div class="item {% if forloop.index == 1 %}active{% endif %}">
+                    <!-- Set the first background image using inline CSS below. -->
+                    {{ slide.content }}
+                </div>
+              {% endfor %}                                      
+          </div>
+
+          <!-- Controls -->
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+              <span class="icon-prev"></span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+              <span class="icon-next"></span>
+          </a>
+
+      </header>        
+      
+      {% include player.html %}
+      
       </div>
     </div>
 
