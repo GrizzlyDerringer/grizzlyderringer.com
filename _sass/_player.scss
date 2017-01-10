@@ -1,0 +1,53 @@
+$progress-bar-height: 35px;
+.jp-audio{
+  display: none;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  &.is-playing{
+    display: block;
+  }
+}
+
+.jp-progress{
+  height: $progress-bar-height;
+}
+
+
+
+.jp-current-time{
+  position: absolute;
+  left: 10px;
+  bottom: 7px;
+}
+
+.jp-duration{
+  position: absolute;
+  right: 10px;
+  bottom: 7px;
+}
+
+.layout-onepage-american-dream{
+  .jp-play-bar{
+    background: linear-gradient(to left, darken($pink, 7), $blue);
+    height: $progress-bar-height;
+  }
+
+  .jp-progress{
+    background-color: rgba($pink, 0.3);
+  }
+}
+
+.layout-onepage-grizzly-derringer{
+  .jp-play-bar{
+    background: darken($orange, 7);
+    height: $progress-bar-height;
+  }
+
+  .jp-current-time, .jp-duration{
+    color: $tan;
+  }
+  .jp-progress{
+    background-color: rgba($brown, 0.8);
+  }
+}

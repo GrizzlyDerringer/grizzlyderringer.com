@@ -2,5 +2,300 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
 @charset "utf-8";
-
+@import "variables";
+@import "breakpoints";
+@import "typography";
+@import "layout";
+@import "player";
 @import "full-slider";
+
+a, a:visited, a:hover, a:link{
+  text-decoration: none;
+}
+
+.site-header{
+  position: fixed;
+  top: 0;
+  backdrop-filter: blur(8px);
+  height: 50px;
+  width: 100%;
+  text-align: center;
+  border-bottom: solid 1px;
+  z-index: 3;
+  .site-nav{
+    margin-top: 15px;
+    li{
+      margin: 0 15px;
+      @include breakpoint(sm){
+        margin: 0 30px;
+      }
+      position: relative;
+      &.social-link{
+        position: relative;
+        a{
+          position: absolute;
+          font-size: 32px;
+          top: -32px;
+          left: 0;
+          right: 0;
+        }
+      }
+      #collectionsDropdown{
+        display: none;
+        position: absolute;
+        width: 130px;
+        border-left: solid 1px;
+        border-right: solid 1px;
+        border-bottom: solid 1px;
+        padding: 5px 5px 10px;
+        border-radius: 0px 0px 15px 15px;
+        top: 34px;
+        left: -7px;
+        &.open{
+          display: block;
+        }
+        li{
+          margin: 0;
+        }
+      }
+    }
+
+  }
+}
+
+.page-content{
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+.wrapper{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.playlist{
+  backdrop-filter: blur(8px);
+  width: auto;
+  border: solid 2px;
+  border-radius: 15px;
+  display: inline-block;
+  min-width: 300px;
+  position: relative;
+  overflow: hidden;
+  .table{
+    .playlist-row{ cursor: pointer; }
+    text-align: left;
+    margin-bottom: 0;
+    overflow: hidden;
+
+    &>tbody>tr>td{
+      border-top-width: 2px;
+    }
+    &>tbody>tr:first-child>td{
+      border-top: none;
+    }
+  }
+}
+
+.layout-onepage-american-dream{
+  h1{
+    color: $yellow;
+    font-family: 'Knockout-92UltmtCruiserwt', 'Georgia', serif;
+    font-size: 20px;
+    margin: 20px auto 0;
+    padding: 0;
+    position: relative;
+    text-align: right;
+    width: 300px;
+    top: 7px;
+    @include breakpoint(md){
+      margin: 0 auto;
+      font-size: 41px;
+      width: 431px;
+    }
+  }
+
+  h2{
+    font-size: 39px;
+    margin: 0 auto 20px;
+    padding: 0;
+    font-family: 'Vow', 'Roboto', 'Helvetica Neue', sans-serif;
+    line-height: 40px;
+    width: 300px;
+    text-align: right;
+    position: relative;
+    @include breakpoint(md) {
+      font-size: 81px;
+      line-height: 77px;
+      width: 431px;
+      left: 0;
+    }
+    &:before{
+      display: block;
+      content: ' ';
+      background: transparent url("/assets/img/girl1.png") no-repeat center center;
+      background-size: contain;
+      position: absolute;
+      width: 96px;
+      height: 138px;
+      left: -8px;
+      top: -36px;
+      @include breakpoint(md){
+        width: 419px;
+        height: 600px;
+        top: -18px;
+        left: -294px;
+      }
+      @include breakpoint(lg){
+        //height: 800px;
+        //width: 600px;
+        //left: -576px;
+      }
+    }
+    span{
+      font-size: 120%;
+    }
+  }
+
+  a, a:visited, a:hover, a:link{
+    color: #fff;
+  }
+
+  .site-header{
+    background-color: rgba(darken($pink, 5), 0.5);
+    border-color: $yellow;
+    .site-nav li a{
+      color: $yellow;
+    }
+    .site-nav li{
+      #collectionsDropdown{
+        background-color: $pink;
+        border-left-color: $yellow;
+        border-bottom-color: $yellow;
+        border-bottom-color: $yellow;
+      }
+    }
+  }
+
+  .playlist{
+    background-color: rgba($pink, 0.1);
+    border-color: #fff;
+    @include breakpoint(md){
+      left: 63px;
+    }
+    .table{
+      thead{
+        color: $yellow;
+      }
+      &>tbody>tr.playing{
+        background-color: $yellow;
+        color: $pink;
+        .glyphicon{
+          color: $pink;
+        }
+      }
+    }
+  }
+}
+
+.layout-onepage-grizzly-derringer{
+  #main{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+  }
+  h1{
+    font-family: "DKInsomniac";
+    font-size: 65px;
+    color: $brown;
+    font-weight: normal;
+    transform: rotate(15deg);
+    position: relative;
+    line-height: 60px;
+    left: 60px;
+    top: 0px;
+    z-index: 2;
+    width: 300px;
+    margin: auto;
+    span{
+      font-size: 110%;
+      display: block;
+      transform: rotate(-5deg);
+    }
+  }
+
+  h2{
+    font-size: 140px;
+    font-family: "DKInsomniac";
+    line-height: 115px;
+    color: rgba(255, 255, 255, 0.35);
+    position: fixed;
+    transform: rotate(-5deg);
+    left: 0px;
+    right: 90px;
+    top: 100px;
+    bottom: 0;
+    width: 526px;
+    margin: auto;
+    @include breakpoint(md){
+      position: absolute;
+    }
+    &:before{
+      display: none;
+      content: ' ';
+      //display: block;
+      background: transparent url("/assets/img/GD_bearhead.png") no-repeat 0 0;
+      background-size: contain;
+      position: absolute;
+      transform: rotate(5deg);
+      opacity: .9;
+      @include breakpoint(md){
+        width: 500px;
+        height: 500px;
+        left: -149px;
+        top: 4px;
+      }
+    }
+    span{
+      display: block;
+      position: relative;
+      left: 90px;
+      transform: rotate(deg);
+    }
+  }
+
+  a, a:visited, a:hover, a:link{
+    color: $orange;
+  }
+
+  .playlist{
+    border-color: $light-brown;
+    background-color: rgba(#FDDAAD, .8);
+    .table{
+      color: $dark-brown;
+      &>tbody>tr.playing{
+        background-color: $orange;
+        color: $tan;
+        .glyphicon{
+          color: $tan;
+        }
+      }
+    }
+  }
+
+  .site-header{
+    background-color: rgba($orange, 1.0);
+    .site-nav li a {
+      color: #fff;
+    }
+
+    .site-nav li{
+      #collectionsDropdown{
+        background-color: rgba($orange, 1.0);
+      }
+    }
+  }
+}

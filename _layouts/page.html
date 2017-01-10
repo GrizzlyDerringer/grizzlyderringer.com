@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+
+  <body class="layout-onepage layout-onepage-american-dream">
+
+    {% include header.html %}
+
+    <div class="page-content">
+      <div class="wrapper">
+
+        <h1>Grizzly Derringer</h1>
+        <h2>American<br><span>Dream</span></h2>
+
+        {% include playlist.html songs=site.data.playlist.songs %}
+
+        {% include player.html %}
+      </div>
+    </div>
+
+    {% include scripts.html %}
+
+  </body>
+
+</html>

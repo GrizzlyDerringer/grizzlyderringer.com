@@ -1,0 +1,36 @@
+{
+  "album_title": "American Dream",
+  "artist": "Grizzly Derringer",
+  "songs": [
+    {
+      "title": "Tax and the Man",
+      "duration": "4:31",
+      "url" : "https://s3-us-west-1.amazonaws.com/grizzlyderringer/Tax_and_the_Man.mp3"
+    },
+    {
+      "title": "Sometimes",
+      "duration": "3:31",
+      "url" : "https://s3-us-west-1.amazonaws.com/grizzlyderringer/Sometimes.mp3"
+    },
+    {
+      "title": "Tick Tick Tock",
+      "duration": "3:34",
+      "url" : "https://s3-us-west-1.amazonaws.com/grizzlyderringer/Tick_Tick_Tock.mp3"
+    },
+    {
+      "title": "Red West",
+      "duration": "3:44",
+      "url" : "https://s3-us-west-1.amazonaws.com/grizzlyderringer/Red_West.mp3"
+    },
+    {
+      "title": "El Camino",
+      "duration": "3:09",
+      "url" : "https://s3-us-west-1.amazonaws.com/grizzlyderringer/El_Camino.mp3"
+    },
+    {
+      "title": "American Dream",
+      "duration": "4:13",
+      "url" : "https://s3-us-west-1.amazonaws.com/grizzlyderringer/American_Dream.mp3"
+    }
+  ]
+}

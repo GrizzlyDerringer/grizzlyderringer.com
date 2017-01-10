@@ -1,0 +1,24 @@
+<div class="playlist">
+    <table class="table">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Time</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for song in include.songs %}
+        <tr class="playlist-row">
+            <td>{{ forloop.index }}.</td>
+            <td>{{ song.title }}</td>
+            <td>{{ song.duration }}</td>
+            <td>
+                <a href="{{ song.url }}" target="_blank" class="glyphicon glyphicon-play song-control"></a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
