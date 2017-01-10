@@ -3,23 +3,23 @@
 
   {% include head.html %}
 
-  <body class="layout-onepage layout-onepage-american-dream">    
+  <body>    
 
     <div class="page-content">
       <div class="wrapper">
         
-        <header id="myCarousel" class="carousel slide">
+        <header id="homeCarousel" class="carousel slide">
           <!-- Indicators -->
           <ol class="carousel-indicators">
-              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-              <li data-target="#myCarousel" data-slide-to="1"></li>
-              <li data-target="#myCarousel" data-slide-to="2"></li>
+              <li data-target="#homeCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#homeCarousel" data-slide-to="1"></li>
+              <li data-target="#homeCarousel" data-slide-to="2"></li>
           </ol>
 
           <!-- Wrapper for Slides -->
           <div class="carousel-inner">
               {% for slide in site.slides %}                
-                <div class="item {% if forloop.index == 1 %}active{% endif %}">
+                <div class="item homepage-slide {{slide.body_class}} {% if forloop.index == 1 %}active{% endif %}">
                     <!-- Set the first background image using inline CSS below. -->
                     {{ slide.content }}
                 </div>
@@ -27,10 +27,10 @@
           </div>
 
           <!-- Controls -->
-          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <a class="left carousel-control" href="#homeCarousel" data-slide="prev">
               <span class="icon-prev"></span>
           </a>
-          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <a class="right carousel-control" href="#homeCarousel" data-slide="next">
               <span class="icon-next"></span>
           </a>
 

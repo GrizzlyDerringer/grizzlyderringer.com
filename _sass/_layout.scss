@@ -2,42 +2,36 @@
     box-sizing: border-box;
 }
 
-
-body.layout-onepage{    
-    padding-top: 50px;                
-}    
-
 html,body{
     height: 100%;
-    width: 100%;
-    &.layout-onepage{
-        overflow-y: auto;
-        overflow-x: hidden;        
-        &.layout-onepage-american-dream{
-            background: $pink;
-            background: -webkit-linear-gradient(left top,  $pink, $pink, $yellow, $yellow) fixed; /* For Safari 5.1 to 6.0 */
-            background: -o-linear-gradient(bottom right,  $pink, $pink, $yellow, $yellow) fixed; /* For Opera 11.1 to 12.0 */
-            background: -moz-linear-gradient(bottom right,  $pink, $pink, $yellow, $yellow) fixed; /* For Firefox 3.6 to 15 */
-            background: linear-gradient(to bottom right,  $pink, $pink, $yellow, $yellow) fixed; /* Standard syntax */
-            background-size: contain;
-            //-webkit-animation: AnimationName 30s linear infinite;
-            //-moz-animation: AnimationName 30s linear infinite;
-            //animation: AnimationName 30s linear infinite;        
-            color: #fff;        
-        }
-
-        &.layout-onepage-grizzly-derringer{
-            overflow-x: hidden;
-            background: transparent url('/assets/img/album_1_background.jpg') no-repeat center center fixed;
-            background-size: 100% 100%;
-            font-family: "TrashHand";
-            font-size: 18px;
-            color: $brown;
-        }
-    }    
+    width: 100%;    
 }
 
+.homepage-slide{
+    overflow-y: auto;
+    overflow-x: hidden;        
+    &.homepage-slide-american-dream{
+        background: $pink;
+        background: -webkit-linear-gradient(left top,  $pink, $pink, $yellow, $yellow) fixed; /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(bottom right,  $pink, $pink, $yellow, $yellow) fixed; /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(bottom right,  $pink, $pink, $yellow, $yellow) fixed; /* For Firefox 3.6 to 15 */
+        background: linear-gradient(to bottom right,  $pink, $pink, $yellow, $yellow) fixed; /* Standard syntax */
+        background-size: contain;
+        //-webkit-animation: AnimationName 30s linear infinite;
+        //-moz-animation: AnimationName 30s linear infinite;
+        //animation: AnimationName 30s linear infinite;        
+        color: #fff;        
+    }
 
+    &.homepage-slide-grizzly-derringer{
+        overflow-x: hidden;
+        background: transparent url('/assets/img/album_1_background.jpg') no-repeat center center fixed;
+        background-size: 100% 100%;
+        font-family: "TrashHand";
+        font-size: 18px;
+        color: $brown;
+    }
+}
 
 
 @-webkit-keyframes AnimationName {

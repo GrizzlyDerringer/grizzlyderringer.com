@@ -1,0 +1,41 @@
+{
+  "album_title": "American Dream",
+  "artist": "Grizzly Derringer",
+  "songs": [
+    {
+      "title": "BMF",
+      "duration": "4:31",
+      "url": "https://s3-us-west-1.amazonaws.com/grizzlyderringer/grizzly_derringer/01+BMF.mp3"
+    },
+    {
+      "title": "Golden Place",
+      "duration": "3:31",
+      "url": "https://s3-us-west-1.amazonaws.com/grizzlyderringer/grizzly_derringer/02+Golden+Place.mp3"
+    },
+    {
+      "title": "Transmissions",
+      "duration": "3:34",
+      "url": "https://s3-us-west-1.amazonaws.com/grizzlyderringer/grizzly_derringer/03+Transmissions.mp3"
+    },
+    {
+      "title": "Nothing Again",
+      "duration": "3:44",
+      "url": "https://s3-us-west-1.amazonaws.com/grizzlyderringer/grizzly_derringer/04+Nothing+Again.mp3"
+    },
+    {
+      "title": "H.O.T.P.B",
+      "duration": "3:09",
+      "url": "https://s3-us-west-1.amazonaws.com/grizzlyderringer/grizzly_derringer/05+House+Of+The+Pissing+Bum.mp3"
+    },
+    {
+      "title": "Loneliest Coast",
+      "duration": "4:13",
+      "url": "https://s3-us-west-1.amazonaws.com/grizzlyderringer/grizzly_derringer/06+Loneliest+Coast.mp3"
+    },
+    {
+      "title": "Mexicali",
+      "duration": "4:13",
+      "url": "https://s3-us-west-1.amazonaws.com/grizzlyderringer/grizzly_derringer/07+Mexicali.mp3"
+    }
+  ]
+}

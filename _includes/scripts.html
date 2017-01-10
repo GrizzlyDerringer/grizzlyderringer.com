@@ -113,10 +113,21 @@
             $('#collectionsDropdown').toggleClass('open');
         }
 
-        $('.carousel').carousel({
-          interval: 5000 //changes the speed
-        });
+        +function setUpCarousel () {
+          const BEFORE_SLIDE = 'slide.bs.carousel';
+          const AFTER_SLIDE = 'slid.bs.carousel';
+          const $HOME_CAROUSEL = $("#homeCarousel");
 
+          $HOME_CAROUSEL.carousel({
+            interval: 10000 //changes the speed
+          });
+
+          //before slide
+          $HOME_CAROUSEL.on(AFTER_SLIDE, function (slide) {
+            
+          });
+
+        }();
     });
 </script>
 
