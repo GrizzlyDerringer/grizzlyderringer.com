@@ -4,35 +4,17 @@
 {% include head.html %}
 
 <body>
-
-    <div class="page-content">
-        <div class="wrapper">
-
-            {% include header.html %}           
-
-            {% include home_carousel.html %}
-
-            {% include player.html %}
-
-        </div>
-    </div>
+    {% include header.html %}
 
     <!-- Page Content -->
     <div class="container">
 
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-4 col-md-push-4">
+                {% include sidebar.html %}
+            </div>            
+            <div class="col-md-8 col-md-pull-8">
                 {{ content }}
-            </div>
-            <div class="col-md-4">
-                <h3>Upcoming Shows</h3>
-                <ul id="upcoming_shows">
-                    <!--upcoming shows here-->
-                    <li>No upcoming shows.</li>
-                </ul>
-
-                <h3>Limited Edition Vinyl!</h3>
-                <p>Custom pressed courtesy of the wonderful folks over at Capsule Labs. We’re talking audiophile quality virgin vinyl with no compromises. This is a limited run so once supplies are gone thats it. Order yours now.</p>
             </div>            
         </div>
 
