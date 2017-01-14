@@ -102,17 +102,31 @@ a.symbol:before {
   font-size: 130%;
 }
 
+a{
+ color: $turquoise; 
+ &:hover, :visited{
+   color: darken($turquoise, 10%);
+ }
+}
+
+h1, h2, h3, h4, h5{
+  color: $neon-blood;
+  font-family: 'Knockout-92UltmtCruiserwt';
+  text-transform: uppercase;
+}
+
 h3.section-head {  
   border-bottom: solid 1px $neon-blood;
-  padding: 0 0 7px;  
-  text-transform: uppercase;  
-  color: $neon-blood;
-  box-sizing: border-box;
-  font-family: 'Knockout-92UltmtCruiserwt';
+  padding: 0 0 7px;        
+  box-sizing: border-box;  
   font-size: 18px;
   @include breakpoint (sm) {
     font-size:24px;
   }
+}
+
+.section-subhead{
+  color: $turquoise;
 }
 
 
