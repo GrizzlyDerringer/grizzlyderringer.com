@@ -1,0 +1,13 @@
+.post {
+  border: solid 1px $offwhite;
+  padding: 15px;
+  margin-bottom: 15px;
+  h3{
+    font-size: 18px;
+    margin-top: 0px;
+    color: $neon-blood;
+    @include breakpoint(sm) {
+      font-size: 24px;
+    }
+  }
+}
