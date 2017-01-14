@@ -4,7 +4,7 @@ layout: page
 nav: true
 ---
 
-## Biography
+<h3 class="section-head"><i class="fa fa-diamond" aria-hidden="true"></i> Biography</h3>
 
 Grizzly Derringer is is an independent rock band from Los Angeles, California, formed in 2014. The band consists of Jeff Skelton (vocals, guitar), Matthew Eldredge (vocals, guitar), Jason Cottis (vocals, bass), and David Lentz (drums, percussion). Their sound has been categorized as “guitar driven Americana rock” or “new classic rock”, and is dominated by the use of heavily textured guitars and a distinct California sound.
 
