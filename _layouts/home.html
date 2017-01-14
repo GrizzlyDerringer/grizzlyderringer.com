@@ -23,15 +23,15 @@
             </div> 
             <div class="col-md-8 col-md-pull-4">  
                 <h3 class="section-head"><i class="fa fa-diamond" aria-hidden="true"></i> News &amp; Updates</h3>
-                {% for post in site.posts %}
-                    {{ post.content }}
+                {% for post in site.posts limit: 5 %}
+                    {{ post.content }}                    
                 {% endfor %}
             </div>            
         </div>
 
     </div>
     <!-- /.container -->
-
+    {% include footer.html %}
     {% include scripts.html %}
 
 </body>
