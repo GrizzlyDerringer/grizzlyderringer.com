@@ -1,5 +1,6 @@
 .btn {
   border-radius: 0;
+  text-transform: uppercase;
 }
 
 .btn-success {
@@ -11,4 +12,15 @@
   background-color: transparent;
   border-color: darken($neon-blood, 10%);
   color: darken($neon-blood, 10%);
+}
+
+.btn-primary {
+  background-color: $turquoise;
+  border-color: darken($turquoise, 10%);
+  color: $offwhite;
+}
+.btn-primary:hover {
+  background-color: darken($turquoise, 10%);
+  border-color: darken($turquoise, 15%);
+  color: $offwhite;
 }
