@@ -1,4 +1,6 @@
-.footer .social-icons a {
-   display: inline-block;
-   color: $turquoise;   
+.footer{
+  border-top: solid 1px lighten($night, 10%);
+  padding-top: 15px;
+  font-family: 'Vow';
+  color: $neon-blood;
 }
