@@ -14,10 +14,11 @@ $progress-bar-height: 35px;
   border-top: #fff 1px solid;
   height: $progress-bar-height;  
   background-color: $night; 
+  
 }
 
 .jp-play-bar{
-  background: $turquoise;
+  background: linear-gradient(to left, darken($neon-blood, 7), $turquoise); ;
   height: $progress-bar-height;
 }
 
