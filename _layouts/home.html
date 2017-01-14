@@ -4,16 +4,13 @@
 {% include head.html %}
 
 <body>
+    {% include header.html %}
 
     <div class="page-content">
         <div class="wrapper">
-
-            {% include header.html %}           
-
             {% include home_carousel.html %}
 
             {% include player.html %}
-
         </div>
     </div>
 
@@ -21,27 +18,23 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-8">
-                <h3>News &amp; Updates</h3>
+            <div class="col-md-8">  
+                <h3 class="section-head"><i class="fa fa-diamond" aria-hidden="true"></i> News &amp; Updates</h3>
                 {% for post in site.posts %}
                     {{ post.content }}
                 {% endfor %}
             </div>
             <div class="col-md-4">
-                <h3>Upcoming Shows</h3>
-                <ul id="upcoming_shows">
+                <h3 class="section-head"><i class="fa fa-diamond" aria-hidden="true"></i> Upcoming Shows</h3>                
+                <table id="upcoming_shows">
                     <!--upcoming shows here-->
-                    <li>No upcoming shows.</li>
-                </ul>
+                    <tr><td>No upcoming shows.</td></tr>
+                </table>
 
-                <h3>Limited Edition Vinyl!</h3>
+                <h3 class="section-head"><i class="fa fa-diamond" aria-hidden="true"></i> Limited Edition Vinyl!</h3>
                 <p>Custom pressed courtesy of the wonderful folks over at Capsule Labs. We’re talking audiophile quality virgin vinyl with no compromises. This is a limited run so once supplies are gone thats it. Order yours now.</p>
             </div>            
         </div>
-
-        <hr>
-
-        {% include footer.html %}
 
     </div>
     <!-- /.container -->

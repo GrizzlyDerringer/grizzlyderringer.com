@@ -102,6 +102,15 @@ a.symbol:before {
   font-size: 130%;
 }
 
+h3.section-head {  
+  border-bottom: solid 1px $neon-blood;
+  padding: 0 0 7px;  
+  text-transform: uppercase;  
+  color: $neon-blood;
+  box-sizing: border-box;
+  font-family: 'Knockout-92UltmtCruiserwt';
+}
+
 
 
 

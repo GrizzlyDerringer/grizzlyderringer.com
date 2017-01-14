@@ -1,0 +1,14 @@
+.btn {
+  border-radius: 0;
+}
+
+.btn-success {
+  background-color: transparent;
+  border: solid 1px $neon-blood; 
+  color: $neon-blood; 
+}
+.btn-success:hover {
+  background-color: transparent;
+  border-color: darken($neon-blood, 10%);
+  color: darken($neon-blood, 10%);
+}

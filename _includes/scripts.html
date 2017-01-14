@@ -137,13 +137,14 @@
                     const datetime = new Date(show.datetime);
                     const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][datetime.getMonth()];
                     const date = datetime.getDate();
-                    html += '<li>';
+                    html += '<tr>';
+                    html += '<td>'
                     html += month + ' ' + date + ' - ' + venue.name;
                     html += '</br>';
-                    html += show.formatted_location;
-                    html += '</br>';
+                    html += '<strong>' + show.formatted_location + '</strong>';
+                    html += '</td><td>';
                     html += '<a href="' + show.facebook_rsvp_url + '" class="btn btn-success btn-xs">RSVP</a>';
-                    html += '</li>';
+                    html += '</td></tr>';
                 }
                 $('#upcoming_shows').html(html);                
             }, 'jsonp');            

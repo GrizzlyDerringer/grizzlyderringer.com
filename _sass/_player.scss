@@ -13,11 +13,11 @@ $progress-bar-height: 35px;
 .jp-progress{
   border-top: #fff 1px solid;
   height: $progress-bar-height;  
-  background-color: #222; 
+  background-color: $night; 
 }
 
 .jp-play-bar{
-  background: $green-apple;
+  background: $turquoise;
   height: $progress-bar-height;
 }
 

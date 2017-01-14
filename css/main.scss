@@ -5,15 +5,17 @@
 @import "variables";
 @import "breakpoints";
 @import "typography";
+@import "buttons";
 @import "layout";
 @import "posts";
 @import "footer";
+@import "header";
 @import "player";
 @import "full-slider";
 
 body, html {
-  background-color: #222;
-  color: #fff;
+  background-color: $night;
+  color: $offwhite;
 }
 
 a, a:visited, a:hover, a:link{
@@ -313,4 +315,12 @@ a, a:visited, a:hover, a:link{
       }
     }
   }
+}
+
+// UPCOMING SHOWS
+#upcoming_shows {
+  width: 100%;
+}
+#upcoming_shows td{
+  padding: 0 5px
 }
