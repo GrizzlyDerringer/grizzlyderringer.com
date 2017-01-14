@@ -1,0 +1,235 @@
+.homepage-slide .wrapper {
+  padding: 0;   
+}
+
+.homepage-slide-american-dream{
+  .itunes-link {
+    position: absolute;
+    top: -460px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 109px;
+    height: 40px;
+    @include breakpoint (sm) {
+      top: 576px;      
+    }
+    @include breakpoint (md) {
+      left: 115px;
+    }
+  }
+  
+  h1{
+    color: $yellow;
+    font-family: 'Knockout-92UltmtCruiserwt', 'Georgia', serif;
+    font-size: 20px;
+    margin: 20px auto 0;
+    padding: 0;
+    position: relative;
+    text-align: right;
+    width: 300px;
+    top: 7px;
+    @include breakpoint(md){
+      margin: 0 auto;
+      font-size: 41px;
+      width: 431px;
+    }
+  }
+
+  h2{
+    font-size: 39px;
+    margin: 0 auto 20px;
+    padding: 0;
+    font-family: 'Vow', 'Roboto', 'Helvetica Neue', sans-serif;
+    line-height: 40px;
+    width: 300px;
+    text-align: right;
+    position: relative;
+    @include breakpoint(md) {
+      font-size: 81px;
+      line-height: 77px;
+      width: 431px;
+      left: 0;
+    }
+    &:before{
+      display: block;
+      content: ' ';
+      background: transparent url("/assets/img/girl1.png") no-repeat center center;
+      background-size: contain;
+      position: absolute;
+      width: 96px;
+      height: 138px;
+      left: -8px;
+      top: -36px;
+      @include breakpoint(md){
+        width: 419px;
+        height: 600px;
+        top: -18px;
+        left: -294px;
+      }
+      @include breakpoint(lg){
+        //height: 800px;
+        //width: 600px;
+        //left: -576px;
+      }
+    }
+    span{
+      font-size: 120%;
+    }
+  }
+
+  a, a:visited, a:hover, a:link{
+    color: #fff;
+  }
+
+  .site-header{
+    background-color: rgba(darken($pink, 5), 0.5);
+    border-color: $yellow;
+    .site-nav li a{
+      color: $yellow;
+    }
+    .site-nav li{
+      #collectionsDropdown{
+        background-color: $pink;
+        border-left-color: $yellow;
+        border-bottom-color: $yellow;
+        border-bottom-color: $yellow;
+      }
+    }
+  }
+
+  .playlist{
+    background-color: rgba($pink, 0.1);
+    border-color: #fff;
+    @include breakpoint(md){
+      left: 63px;
+    }
+    .table{
+      thead{
+        color: $yellow;
+      }
+      &>tbody>tr.playing{
+        background-color: $yellow;
+        color: $pink;
+        .glyphicon{
+          color: $pink;
+        }
+      }
+    }
+  }
+}
+
+.homepage-slide-grizzly-derringer{
+  .itunes-link {
+    position: absolute;
+    top: -460px;
+    left: -120px;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 109px;
+    height: 40px;
+    @include breakpoint (sm) {
+      top: 576px;      
+      left: 0;
+    }
+  } 
+  
+  #main{
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+  }
+  h1{
+    font-family: "DKInsomniac";
+    font-size: 65px;
+    color: $brown;
+    font-weight: normal;
+    transform: rotate(15deg);
+    position: relative;
+    line-height: 60px;
+    left: 60px;
+    top: 0px;
+    z-index: 2;
+    width: 300px;
+    margin: auto;
+    span{
+      font-size: 110%;
+      display: block;
+      transform: rotate(-5deg);
+    }
+  }
+
+  h2{
+    font-size: 140px;
+    font-family: "DKInsomniac";
+    line-height: 115px;
+    color: rgba(255, 255, 255, 0.35);
+    position: fixed;
+    transform: rotate(-5deg);
+    left: 0px;
+    right: 90px;
+    top: 100px;
+    bottom: 0;
+    width: 526px;
+    margin: auto;
+    @include breakpoint(md){
+      position: absolute;
+    }
+    &:before{
+      display: none;
+      content: ' ';
+      //display: block;
+      background: transparent url("/assets/img/GD_bearhead.png") no-repeat 0 0;
+      background-size: contain;
+      position: absolute;
+      transform: rotate(5deg);
+      opacity: .9;
+      @include breakpoint(md){
+        width: 500px;
+        height: 500px;
+        left: -149px;
+        top: 4px;
+      }
+    }
+    span{
+      display: block;
+      position: relative;
+      left: 90px;
+      transform: rotate(deg);
+    }
+  }
+
+  a, a:visited, a:hover, a:link{
+    color: $orange;
+  }
+
+  .playlist{
+    border-color: $light-brown;
+    background-color: rgba(#FDDAAD, .8);
+    .table{
+      color: $dark-brown;
+      &>tbody>tr.playing{
+        background-color: $orange;
+        color: $tan;
+        .glyphicon{
+          color: $tan;
+        }
+      }
+    }
+  }
+
+  .site-header{
+    background-color: rgba($orange, 1.0);
+    .site-nav li a {
+      color: #fff;
+    }
+
+    .site-nav li{
+      #collectionsDropdown{
+        background-color: rgba($orange, 1.0);
+      }
+    }
+  }
+}
