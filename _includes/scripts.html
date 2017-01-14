@@ -148,7 +148,27 @@
                 }
                 $('#upcoming_shows').html(html);                
             }, 'jsonp');            
-        } ();        
+        } ();  
+
+        +function getIntagramPhotos () {
+            const url = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=1607222.a9eb25c.13b2a9dc198148499a4c43dc1f8acbb7';
+            $.get(url, function (data) {
+                console.log(data);                                
+                var html = '<div class="row">';
+                for(var i=0; i < 9; i++) {                    
+                    var link = data.data[i].link;
+                    var images = data.data[i].images;
+                    var thumbnail = images.thumbnail;
+                    html += '<div class="col-xs-3 col-md-4">';
+                    html += '<a href="' + link + '" target="_blank">'
+                    html += '<img src="' + thumbnail.url + '" class="img-thumbnail" style="margin-bottom:5px" />'
+                    html += '</a>'         
+                    html += '</div>';
+                }
+                html += '</div>';
+                $('.instafeed').html(html);
+            }, 'jsonp');            
+        } ();      
     });
 </script>
 
