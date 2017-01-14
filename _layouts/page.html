@@ -10,17 +10,17 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-4 col-md-push-4">
+            <div class="col-md-4 col-md-push-8">
                 {% include sidebar.html %}
             </div>            
-            <div class="col-md-8 col-md-pull-8">
+            <div class="col-md-8 col-md-pull-4">
                 {{ content }}
             </div>            
         </div>
 
     </div>
     <!-- /.container -->
-
+    {% include footer.html %}
     {% include scripts.html %}
 
 </body>
