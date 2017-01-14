@@ -109,6 +109,10 @@ h3.section-head {
   color: $neon-blood;
   box-sizing: border-box;
   font-family: 'Knockout-92UltmtCruiserwt';
+  font-size: 18px;
+  @include breakpoint (sm) {
+    font-size:24px;
+  }
 }
 
 

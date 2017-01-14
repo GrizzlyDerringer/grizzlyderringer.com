@@ -14,5 +14,8 @@
   text-transform: uppercase;
   font-family: 'Knockout-92UltmtCruiserwt';
   font-weight: bold;
-  font-size: 25px;
+  font-size: 22px;
+  @include breakpoint(sm){ 
+    font-size: 25px;
+  }
 }
