@@ -2,18 +2,24 @@ $progress-bar-height: 35px;
 .jp-audio{
   display: none;
   position: fixed;
-  bottom: 0;
+  top: 51px;
   width: 100%;
+  z-index: 100;
   &.is-playing{
     display: block;
   }
 }
 
 .jp-progress{
-  height: $progress-bar-height;
+  border-top: #fff 1px solid;
+  height: $progress-bar-height;  
+  background-color: #222; 
 }
 
-
+.jp-play-bar{
+  background: $green-apple;
+  height: $progress-bar-height;
+}
 
 .jp-current-time{
   position: absolute;

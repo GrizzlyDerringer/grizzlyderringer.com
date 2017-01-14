@@ -1,104 +1,14 @@
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/jplayer/jquery.jplayer.min.js"></script>
-<script src="{{ "/assets/js/swipeable-carousel.js" | prepend: site.baseurl }}"></script>
+<script src="{{ " /assets/js/swipeable-carousel.js " | prepend: site.baseurl }}"></script>
 <script type="text/javascript">
     $(function () {
         'use strict';
-        var $jplayer = $('.player').jPlayer({
-                supplied: 'mp3',
-                ended: onEnded
-            });
-
-        setBindings();
-
-        function onTrackRowClick(e){
-            e.preventDefault();
-            var $this = $(this),
-                $playbutton = $this.find('.song-control'),
-                href = $playbutton.attr('href');
-            if($this.hasClass('playing')){
-                $jplayer.jPlayer('pause');
-                $('.playlist-row').removeClass('playing');
-                $playbutton.removeClass('glyphicon-pause')
-                            .addClass('glyphicon-play');
-                setBindings();
-                $('.jp-audio').removeClass('is-playing');
-            }else{
-                playTrack(href);
-                $('.playlist-row').removeClass('playing');
-                $this.addClass('playing');
-                $('.song-control')
-                        .removeClass('glyphicon-pause')
-                        .addClass('glyphicon-play');
-                $playbutton.removeClass('glyphicon-play');
-                $playbutton.addClass('glyphicon-pause');
-                setBindings();
-            }
-        }
-
-        function onPlayButtonClick(e) {
-            e.stopPropagation();
-            e.preventDefault();
-            var $this = $(this),
-                href = $this.attr('href');
-            playTrack(href);
-            $('.playlist-row').removeClass('playing')
-            $this.closest('tr').addClass('playing');
-            $('.song-control')
-                    .removeClass('glyphicon-pause')
-                    .addClass('glyphicon-play');
-            $this.removeClass('glyphicon-play');
-            $this.addClass('glyphicon-pause');
-            setBindings();
-        }
-
-        function onPauseButtonClick(e) {
-            e.stopPropagation();
-            e.preventDefault();
-            var $this = $(this);
-            $jplayer.jPlayer('pause');
-            $('.playlist-row').removeClass('playing');
-            $this.removeClass('glyphicon-pause')
-                 .addClass('glyphicon-play');
-            setBindings();
-            $('.jp-audio').removeClass('is-playing');
-        }
-
-        function onEnded() {
-            var $next_tr = $('.glyphicon-pause').closest('tr').next('tr'),
-                $next_playbutton = $next_tr.find('.glyphicon-play');
-            $('.playlist-row').removeClass('playing');
-            $next_tr.addClass('playing');
-            $('.song-control')
-                    .removeClass('glyphicon-pause')
-                    .addClass('glyphicon-play');
-            if($next_playbutton) {
-                var href = $next_playbutton.attr('href');
-                playTrack(href);
-                $next_playbutton.removeClass('glyphicon-play');
-                $next_playbutton.addClass('glyphicon-pause');
-            }
-            setBindings();
-        }
-
-        function setBindings () {
-            $('.glyphicon-pause').off().on('click', onPauseButtonClick);
-            $('.glyphicon-play').off().on('click', onPlayButtonClick);
-            $('.playlist-row').off().on('click', onTrackRowClick);
-            $('#collectionsToggle').off().on('click', onCollectionsToggleClick);
-        }
-
-        function playTrack(href) {
-            $jplayer.jPlayer('setMedia', {
-                mp3: href
-            }).jPlayer('play');
-            $('.jp-audio').addClass('is-playing');
-            trackEvent('playbackStart', href);
-        }
-
-        function trackEvent(action, label){
-            if(window.ga){
+        function trackEvent(action, label) {
+            if (window.ga) {
                 ga('send', {
                     hitType: 'event',
                     eventCategory: 'songs',
@@ -108,34 +18,146 @@
             }
         }
 
-        function onCollectionsToggleClick(e){
-            e.preventDefault();
-            $('#collectionsDropdown').toggleClass('open');
-        }
+        +function setUpPlayer() {
+            var $jplayer = $('.player').jPlayer({
+                supplied: 'mp3',
+                ended: onEnded
+            });
 
-        +function setUpCarousel () {
-          const BEFORE_SLIDE = 'slide.bs.carousel';
-          const AFTER_SLIDE = 'slid.bs.carousel';
-          const $HOME_CAROUSEL = $("#homeCarousel");
+            setBindings();
 
-          $HOME_CAROUSEL.carousel({
-            interval: 10000 //changes the speed
-          });
+            function onTrackRowClick(e) {
+                e.preventDefault();
+                var $this = $(this),
+                    $playbutton = $this.find('.song-control'),
+                    href = $playbutton.attr('href');
+                if ($this.hasClass('playing')) {
+                    $jplayer.jPlayer('pause');
+                    $('.playlist-row').removeClass('playing');
+                    $playbutton.removeClass('glyphicon-pause')
+                        .addClass('glyphicon-play');
+                    setBindings();
+                    $('.jp-audio').removeClass('is-playing');
+                } else {
+                    playTrack(href);
+                    $('.playlist-row').removeClass('playing');
+                    $this.addClass('playing');
+                    $('.song-control')
+                        .removeClass('glyphicon-pause')
+                        .addClass('glyphicon-play');
+                    $playbutton.removeClass('glyphicon-play');
+                    $playbutton.addClass('glyphicon-pause');
+                    setBindings();
+                }
+            }
 
-          //before slide
-          $HOME_CAROUSEL.on(AFTER_SLIDE, function (slide) {
-            
-          });
+            function onPlayButtonClick(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                var $this = $(this),
+                    href = $this.attr('href');
+                playTrack(href);
+                $('.playlist-row').removeClass('playing')
+                $this.closest('tr').addClass('playing');
+                $('.song-control')
+                    .removeClass('glyphicon-pause')
+                    .addClass('glyphicon-play');
+                $this.removeClass('glyphicon-play');
+                $this.addClass('glyphicon-pause');
+                setBindings();
+            }
 
-        }();
+            function onPauseButtonClick(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                var $this = $(this);
+                $jplayer.jPlayer('pause');
+                $('.playlist-row').removeClass('playing');
+                $this.removeClass('glyphicon-pause')
+                    .addClass('glyphicon-play');
+                setBindings();
+                $('.jp-audio').removeClass('is-playing');
+            }
+
+            function onEnded() {
+                var $next_tr = $('.glyphicon-pause').closest('tr').next('tr'),
+                    $next_playbutton = $next_tr.find('.glyphicon-play');
+                $('.playlist-row').removeClass('playing');
+                $next_tr.addClass('playing');
+                $('.song-control')
+                    .removeClass('glyphicon-pause')
+                    .addClass('glyphicon-play');
+                if ($next_playbutton) {
+                    var href = $next_playbutton.attr('href');
+                    playTrack(href);
+                    $next_playbutton.removeClass('glyphicon-play');
+                    $next_playbutton.addClass('glyphicon-pause');
+                }
+                setBindings();
+            }
+
+            function setBindings() {
+                $('.glyphicon-pause').off().on('click', onPauseButtonClick);
+                $('.glyphicon-play').off().on('click', onPlayButtonClick);
+                $('.playlist-row').off().on('click', onTrackRowClick);                
+            }
+
+            function playTrack(href) {
+                $jplayer.jPlayer('setMedia', {
+                    mp3: href
+                }).jPlayer('play');
+                $('.jp-audio').addClass('is-playing');
+                trackEvent('playbackStart', href);
+            }
+        } ();
+
+        +function setUpCarousel() {
+            const BEFORE_SLIDE = 'slide.bs.carousel';
+            const AFTER_SLIDE = 'slid.bs.carousel';
+            const $HOME_CAROUSEL = $("#homeCarousel");
+
+            $HOME_CAROUSEL.carousel({
+                interval: 10000 //changes the speed
+            });
+
+            //before slide
+            $HOME_CAROUSEL.on(AFTER_SLIDE, function (slide) {
+
+            });
+
+        } ();
+
+        +function getUpcomingEvents() {
+            const url = 'http://api.bandsintown.com/artists/Grizzly%20Derringer/events.json?api_version=2.0&app_id=js_grizzlyderringer.com&extended=true&widget_version=1.5.2&callback=bit_jsonp1484343130858';
+            $.get(url, function (data) {
+                var html = '';
+                for (var i=0; i<data.length; i++) {                    
+                    const show = data[i];
+                    const venue = show.venue;                    
+                    const datetime = new Date(show.datetime);
+                    const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][datetime.getMonth()];
+                    const date = datetime.getDate();
+                    html += '<li>';
+                    html += month + ' ' + date + ' - ' + venue.name;
+                    html += '</br>';
+                    html += show.formatted_location;
+                    html += '</br>';
+                    html += '<a href="' + show.facebook_rsvp_url + '" class="btn btn-success btn-xs">RSVP</a>';
+                    html += '</li>';
+                }
+                $('#upcoming_shows').html(html);                
+            }, 'jsonp');            
+        } ();        
     });
 </script>
 
 <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-78278085-1', 'auto');
     ga('send', 'pageview');
