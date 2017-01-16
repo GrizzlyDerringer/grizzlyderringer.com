@@ -155,7 +155,7 @@
             $.get(url, function (data) {
                 console.log(data);                                
                 var html = '<div class="row">';
-                for(var i=0; i < 9; i++) {                    
+                for(var i=0; i < 12; i++) {                    
                     var link = data.data[i].link;
                     var images = data.data[i].images;
                     var thumbnail = images.thumbnail;
@@ -169,10 +169,20 @@
                 $('.instafeed').html(html);
             }, 'jsonp');            
         } ();      
+    
+        +function setUpNewsFeedLinks () {                                                            
+            $('.scroll-to-link').on('click', function (e) {
+                e.preventDefault();
+                const isHome = window.location.pathname === '{{ "/" | prepend: site.baseurl }}';
+                if(!isHome) {
+                    return window.location = '{{ "/#news" | prepend: site.baseurl }}';
+                }
+                const target = $(this).attr('href')
+                $("html, body").animate({ scrollTop: $(target).offset().top - 50 }, 750);
+            });
+        }();    
     });
-</script>
-
-<script>
+    
     (function (i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
         (i[r].q = i[r].q || []).push(arguments)
@@ -182,4 +192,5 @@
 
     ga('create', 'UA-78278085-1', 'auto');
     ga('send', 'pageview');
+
 </script>

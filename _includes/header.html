@@ -13,8 +13,11 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li>
+                <li class="hidden">
                     <a href="{{ "/" | prepend: site.baseurl }}">Home</a>
+                </li>
+                <li>
+                    <a href="#news" class="scroll-to-link">News</a>
                 </li>
                 {% for page in site.pages %}
                 {% if page.nav %}
