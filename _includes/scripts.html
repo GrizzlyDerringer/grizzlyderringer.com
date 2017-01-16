@@ -128,7 +128,7 @@
         } ();
 
         +function getUpcomingEvents() {
-            const url = 'http://api.bandsintown.com/artists/Grizzly%20Derringer/events.json?api_version=2.0&app_id=js_grizzlyderringer.com&extended=true&widget_version=1.5.2&callback=bit_jsonp1484343130858';
+            const url = 'https://api.bandsintown.com/artists/Grizzly%20Derringer/events.json?api_version=2.0&app_id=js_grizzlyderringer.com&extended=true&widget_version=1.5.2&callback=bit_jsonp1484343130858';
             $.get(url, function (data) {
                 var html = '';
                 for (var i=0; i<data.length; i++) {                    
