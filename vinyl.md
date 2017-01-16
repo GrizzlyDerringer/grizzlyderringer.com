@@ -9,7 +9,7 @@ layout: "no-sidebar"
 
 <p>Custom pressed courtesy of the wonderful folks over at Capsule Labs. We’re talking audiophile quality virgin vinyl with no compromises. This is a limited run so once supplies are gone thats it. Order yours now.</p>
 
-<img src="{{ /assets/img/vinyl_pressing.png | prepend: site.baseurl }}" alt="" class="img-responsive">
+<img src="{{ "/assets/img/vinyl_pressing.png" | prepend: site.baseurl }}" alt="" class="img-responsive">
 
 <p>$23 Domestic (US only. Includes shipping and handling)</p>
 <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=T7J76TZVBGLY2&t=YzBlYzcyZGQ5ODRjZjljNmJlNjEwMDFiYWVkYzkwNmJlZTU2NGZjNixUbU4zdWpESg==&p=&m=0" class="btn btn-success">BUY NOW</a>
