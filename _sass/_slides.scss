@@ -56,7 +56,7 @@
     &:before{
       display: block;
       content: ' ';
-      background: transparent url("/assets/img/girl1.png") no-repeat center center;
+      background: transparent url("../assets/img/girl1.png") no-repeat center center;
       background-size: contain;
       position: absolute;
       width: 96px;
@@ -182,7 +182,7 @@
       display: none;
       content: ' ';
       //display: block;
-      background: transparent url("/assets/img/GD_bearhead.png") no-repeat 0 0;
+      background: transparent url("../assets/img/GD_bearhead.png") no-repeat 0 0;
       background-size: contain;
       position: absolute;
       transform: rotate(5deg);
