@@ -9,11 +9,15 @@ layout: "page"
 
 <div class="row">
   {% for item in site.data.merch %}
-    <div class="col-sm-3">
-      {{ item.img_url }}
-      <a href="{{ item.link }}">    
-        <img src="{{ item.image_url | prepend: site.basurl }}" alt="{{ item.title }}" class="img-responsive">
-      </a>  
+    <div class="col-sm-3 merch-item">
+      <h5>{{ item.title }}</h5>      
+      <a href="{{ item.link }}" 
+         target="_blank"
+         class="merch-item-thumbnail" 
+         style="background-image: url({{ item.image_url  | prepend: site.basurl }})"></a>  
+      <a href="{{ item.link }}" 
+         class="btn btn-success btn-block">BUY NOW {{ item.price | prepend: '$' | append: '*' }}</a>
+      <small>* plus shipping/handling</small>
     </div>
   {% endfor %}
 </div>

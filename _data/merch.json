@@ -1,6 +1,6 @@
 [
   {
-    "image_url": "",
+    "image_url": "/assets/img/baseball-tee-1.png",
     "link": "https://squareup.com/store/grizzlyderringer/item/american-dream-baseball-tee",
     "title": "American Dream Baseball Tee",    
     "price": 15    
@@ -20,7 +20,7 @@
   {
     "image_url": "/assets/img/american_dream_cover.jpg",
     "link": "https://squareup.com/store/grizzlyderringer/item/american-dream-cd",
-    "title": "Limited Edition Vinyl",    
+    "title": "American Dream (CD)",    
     "price": 6
   }
 ]

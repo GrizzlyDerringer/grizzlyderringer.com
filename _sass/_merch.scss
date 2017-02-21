@@ -1,0 +1,19 @@
+.merch-item {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.merch-item-thumbnail {
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 5px;
+  border: solid 2px $turquoise;
+  height: 200px;
+}
+
+.merch-item small {    
+  color: $neon-blood;
+  font-size: 9px;
+}
