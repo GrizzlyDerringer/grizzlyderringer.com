@@ -9,7 +9,7 @@ layout: "page"
 
 <div class="row">
   {% for item in site.data.merch %}
-    <div class="col-sm-3 merch-item">
+    <div class="col-sm-6 merch-item">
       <h5>{{ item.title }}</h5>      
       <a href="{{ item.link }}" 
          target="_blank"
