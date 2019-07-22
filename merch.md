@@ -1,6 +1,6 @@
 ---
 title: "Merch"
-nav: true
+nav: false
 layout: "page"
 ---
 
