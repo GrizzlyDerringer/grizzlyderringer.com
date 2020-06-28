@@ -18,44 +18,17 @@
 
             setBindings();
 
-            function onTrackRowClick(e) {
-                e.preventDefault();
-                var $this = $(this),
-                    $playbutton = $this.find('.song-control'),
-                    href = $playbutton.attr('href');
-                if ($this.hasClass('playing')) {
-                    $jplayer.jPlayer('pause');
-                    $('.playlist-row').removeClass('playing');
-                    $playbutton.removeClass('glyphicon-pause')
-                        .addClass('glyphicon-play');
-                    setBindings();
-                    $('.jp-audio').removeClass('is-playing');
-                } else {
-                    playTrack(href);
-                    $('.playlist-row').removeClass('playing');
-                    $this.addClass('playing');
-                    $('.song-control')
-                        .removeClass('glyphicon-pause')
-                        .addClass('glyphicon-play');
-                    $playbutton.removeClass('glyphicon-play');
-                    $playbutton.addClass('glyphicon-pause');
-                    setBindings();
-                }
-            }
-
             function onPlayButtonClick(e) {
                 e.stopPropagation();
                 e.preventDefault();
                 var $this = $(this),
                     href = $this.attr('href');
                 playTrack(href);
-                $('.playlist-row').removeClass('playing')
-                $this.closest('tr').addClass('playing');
                 $('.song-control')
-                    .removeClass('glyphicon-pause')
-                    .addClass('glyphicon-play');
-                $this.removeClass('glyphicon-play');
-                $this.addClass('glyphicon-pause');
+                    .removeClass('pause-banner')
+                    .addClass('play-banner');
+                $this.removeClass('play-banner');
+                $this.addClass('pause-banner');
                 setBindings();
             }
 
@@ -64,34 +37,32 @@
                 e.preventDefault();
                 var $this = $(this);
                 $jplayer.jPlayer('pause');
-                $('.playlist-row').removeClass('playing');
-                $this.removeClass('glyphicon-pause')
-                    .addClass('glyphicon-play');
+                $this.removeClass('pause-banner')
+                    .addClass('play-banner');
                 setBindings();
                 $('.jp-audio').removeClass('is-playing');
             }
 
             function onEnded() {
-                var $next_tr = $('.glyphicon-pause').closest('tr').next('tr'),
-                    $next_playbutton = $next_tr.find('.glyphicon-play');
-                $('.playlist-row').removeClass('playing');
-                $next_tr.addClass('playing');
-                $('.song-control')
-                    .removeClass('glyphicon-pause')
-                    .addClass('glyphicon-play');
-                if ($next_playbutton) {
-                    var href = $next_playbutton.attr('href');
-                    playTrack(href);
-                    $next_playbutton.removeClass('glyphicon-play');
-                    $next_playbutton.addClass('glyphicon-pause');
-                }
+                // var $next_tr = $('.glyphicon-pause').closest('tr').next('tr'),
+                //     $next_playbutton = $next_tr.find('.glyphicon-play');
+                // $('.playlist-row').removeClass('playing');
+                // $next_tr.addClass('playing');
+                // $('.song-control')
+                //     .removeClass('glyphicon-pause')
+                //     .addClass('glyphicon-play');
+                // if ($next_playbutton) {
+                //     var href = $next_playbutton.attr('href');
+                //     playTrack(href);
+                //     $next_playbutton.removeClass('glyphicon-play');
+                //     $next_playbutton.addClass('glyphicon-pause');
+                // }
                 setBindings();
             }
 
             function setBindings() {
-                $('.glyphicon-pause').off().on('click', onPauseButtonClick);
-                $('.glyphicon-play').off().on('click', onPlayButtonClick);
-                $('.playlist-row').off().on('click', onTrackRowClick);
+                $('.song-control.pause-banner').off().on('click', onPauseButtonClick);
+                $('.song-control.play-banner').off().on('click', onPlayButtonClick);
             }
 
             function playTrack(href) {
@@ -99,7 +70,6 @@
                     mp3: href
                 }).jPlayer('play');
                 $('.jp-audio').addClass('is-playing');
-                trackEvent('playbackStart', href);
             }
         }();
 
@@ -112,6 +82,7 @@
                 arrows: false,
                 speed: 1000,
                 infinite: true,
+                initialSlide: 0,
                 responsive: [
                     {
                         breakpoint: 480,
@@ -122,7 +93,8 @@
                             slidesToShow: 1,
                             mobileFirst: true,
                             variableWidth: true,
-                            variableHeight: true
+                            variableHeight: true,
+                            initialSlide: 1
                         }
                     }
                 ]

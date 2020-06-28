@@ -1,5 +1,5 @@
 .slick-carousel {
-  margin-top: 2.5em;
+  margin-top: 2.75em;
   margin-bottom: 1em;
   opacity: 0;
   visibility: hidden;
@@ -22,11 +22,7 @@
   justify-content: center;
   vertical-align: middle;
 
-  .play-banner {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .5s ease;
-    -webkit-transition: opacity .5s ease;
+  .play-banner, .pause-banner {
     background: rgba(0, 0, 0, 0.65);
     color: #FFFFFA;
     margin: auto;
@@ -40,6 +36,30 @@
     font-size: 1.75em;
   }
 
+  .play-banner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease;
+    -webkit-transition: opacity .5s ease;
+    .fa-pause {
+      display: none;
+    }
+
+    .fa-play {
+      display: inline-block;
+    }
+  }
+
+  .pause-banner {
+    .fa-pause {
+      display: inline-block;
+    }
+
+    .fa-play {
+      display: none;
+    }
+  }
+
   &:hover {
     .play-banner {
       visibility: visible;
@@ -47,12 +67,15 @@
     }
   }
 
-  .fa-play {
+  .fa-play, .fa-pause {
     color: $offwhite;
     font-size: 1em;
+    margin: auto;
+  }
+
+  .fa-play {
     position: relative;
     left: 3px;
-    margin: auto;
   }
 }
 
