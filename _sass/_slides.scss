@@ -2,6 +2,25 @@
   padding: 0;   
 }
 
+.homepage-slide.homepage-slide-great-divide {
+  background: transparent url("../assets/img/the-great-divide-cover.jpg") no-repeat center bottom;
+  background-size: cover;
+  .playlist{
+    background-color: #221b63;
+    border-color: #221b63;
+    .table{
+      color: $offwhite;
+      &>tbody>tr.playing{
+        background-color: $turquoise;
+        color: $offwhite;
+        .glyphicon{
+          color: $offwhite;
+        }
+      }
+    }
+  }
+}
+
 .homepage-slide-american-dream{
   .itunes-link {
     position: absolute;

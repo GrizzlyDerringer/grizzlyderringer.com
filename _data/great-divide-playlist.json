@@ -1,0 +1,11 @@
+{
+  "album_title": "The Great Divide",
+  "artist": "Grizzly Derringer",
+  "songs": [
+    {
+      "title": "The Great Divide",
+      "duration": "5:20",
+      "url": "https://grizzlyderringer.s3-us-west-1.amazonaws.com/the-great-divide.mp3"
+    }
+  ]
+}
