@@ -10,17 +10,6 @@
     $(function () {
         'use strict';
 
-        function trackEvent(action, label) {
-            if (window.ga) {
-                ga('send', {
-                    hitType: 'event',
-                    eventCategory: 'songs',
-                    eventAction: action,
-                    eventLabel: label
-                });
-            }
-        }
-
         +function setUpPlayer() {
             var $jplayer = $('.player').jPlayer({
                 supplied: 'mp3',
@@ -168,26 +157,6 @@
             }, 'jsonp');
         }();
 
-        +function getIntagramPhotos() {
-            const url = 'https://api.instagram.com/v1/users/self/media/recent/?access_token=1604842349.de0191f.30341075fd3c40d39d55203ee095bc00';
-            $.get(url, function (data) {
-                console.log(data);
-                var html = '<div class="row">';
-                for (var i = 0; i < 12; i++) {
-                    var link = data.data[i].link;
-                    var images = data.data[i].images;
-                    var thumbnail = images.thumbnail;
-                    html += '<div class="col-xs-6 col-sm-4">';
-                    html += '<a href="' + link + '" target="_blank">'
-                    html += '<img src="' + thumbnail.url + '" class="img-thumbnail" style="margin-bottom:5px" />'
-                    html += '</a>'
-                    html += '</div>';
-                }
-                html += '</div>';
-                $('.instafeed').html(html);
-            }, 'jsonp');
-        }();
-
         +function setUpNewsFeedLinks() {
             $('.scroll-to-link').on('click', function (e) {
                 e.preventDefault();
@@ -200,20 +169,5 @@
             });
         }();
     });
-
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', '{{ site.ga_id }}', 'auto');
-    ga('send', 'pageview');
 
 </script>
