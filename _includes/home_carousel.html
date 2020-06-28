@@ -1,27 +1,7 @@
-<header id="homeCarousel" class="carousel slide">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
+<div class="slick-carousel">
     {% for slide in site.slides %}
-    <li data-target="#homeCarousel" data-slide-to="0" {% if forloop.index==1 %}class="active" {% endif %}></li>
-    {% endfor %}
-  </ol>
-
-  <!-- Wrapper for Slides -->
-  <div class="carousel-inner">
-    {% for slide in site.slides %}
-    <div class="item homepage-slide {{slide.body_class}} {% if forloop.index == 1 %}active{% endif %}">
-      <!-- Set the first background image using inline CSS below. -->
-      {{ slide.content }}
+    <div class="homepage-slide {{slide.body_class}} {% if forloop.index == 1 %}active{% endif %}">
+        {{ slide.content }}
     </div>
     {% endfor %}
-  </div>
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#homeCarousel" data-slide="prev">
-    <span class="icon-prev"></span>
-  </a>
-  <a class="right carousel-control" href="#homeCarousel" data-slide="next">
-    <span class="icon-next"></span>
-  </a>
-
-</header>
+</div>

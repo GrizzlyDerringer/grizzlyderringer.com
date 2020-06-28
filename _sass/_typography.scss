@@ -103,7 +103,7 @@ a.symbol:before {
 }
 
 a{
- color: $turquoise; 
+ color: $turquoise;
  &:hover, :visited{
    color: darken($turquoise, 10%);
  }
