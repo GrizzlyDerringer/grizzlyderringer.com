@@ -12,11 +12,48 @@
   opacity: 1;
 }
 
-.homepage-slide .album-cover-container{
+.homepage-slide .album-cover-container {
   padding: 0;
   width: 300px;
   height: 300px;
   margin: auto;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  vertical-align: middle;
+
+  .play-banner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease;
+    -webkit-transition: opacity .5s ease;
+    background: rgba(0, 0, 0, 0.65);
+    color: #FFFFFA;
+    margin: auto;
+    border: solid 2px #FFFFFA;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    font-size: 1.75em;
+  }
+
+  &:hover {
+    .play-banner {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  .fa-play {
+    color: $offwhite;
+    font-size: 1em;
+    position: relative;
+    left: 3px;
+    margin: auto;
+  }
 }
 
 .homepage-slide-great-divide .album-cover-container {
@@ -24,12 +61,12 @@
   background-size: cover;
 }
 
-.homepage-slide-american-dream .album-cover-container{
+.homepage-slide-american-dream .album-cover-container {
   background: transparent url("../assets/img/american_dream_cover.jpg") no-repeat center center;
   background-size: contain;
 }
 
-.homepage-slide-grizzly-derringer .album-cover-container{
+.homepage-slide-grizzly-derringer .album-cover-container {
   background: transparent url("../assets/img/gd_cover.png") no-repeat 0 0;
   background-size: contain;
 }
