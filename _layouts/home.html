@@ -4,34 +4,38 @@
 {% include head.html %}
 
 <body>
-    {% include header.html %}
+{% include header.html %}
 
-    <div class="page-content">
-        <div class="wrapper">
+<div class="wrapper">
+    {% include player.html %}
+</div>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="section-head"><i class="fa fa-diamond" aria-hidden="true"></i> Music</h3>
             {% include home_carousel.html %}
-            {% include player.html %}
         </div>
     </div>
 
-    <!-- Page Content -->
-    <div class="container">
 
-        <div class="row">
-            <div class="col-md-4 col-md-push-8">
-                {% include sidebar.html %}
-            </div> 
-            <div id="news" class="col-md-8 col-md-pull-4">  
-                <h3 class="section-head"><i class="fa fa-diamond" aria-hidden="true"></i> News &amp; Updates</h3>
-                {% for post in site.posts limit: 1 %}
-                    {{ post.content }}                    
-                {% endfor %}
-            </div>            
+    <div class="row">
+        <div class="col-md-4 col-md-push-8">
+            {% include sidebar.html %}
         </div>
-
+        <div id="news" class="col-md-8 col-md-pull-4">
+            <h3 class="section-head"><i class="fa fa-diamond" aria-hidden="true"></i> News &amp; Updates</h3>
+            {% for post in site.posts limit: 1 %}
+            {{ post.content }}
+            {% endfor %}
+        </div>
     </div>
-    <!-- /.container -->
-    {% include footer.html %}
-    {% include scripts.html %}
+
+</div>
+<!-- /.container -->
+{% include footer.html %}
+{% include scripts.html %}
 
 </body>
 
