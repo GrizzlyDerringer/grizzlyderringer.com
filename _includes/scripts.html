@@ -1,145 +1,215 @@
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"
-        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-        crossorigin="anonymous"></script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"
+></script>
+<script
+  type="text/javascript"
+  src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+></script>
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+  integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  crossorigin="anonymous"
+></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jplayer/2.9.2/jplayer/jquery.jplayer.min.js"></script>
 <script type="text/javascript">
-    $(function () {
-        'use strict';
+  $(function () {
+    "use strict";
 
-        +function setUpPlayer() {
-            var $jplayer = $('.player').jPlayer({
-                supplied: 'mp3',
-                ended: onEnded
-            });
+    +(function setUpPlayer() {
+      var playBtnClass = ".cover-player--controls__play";
+      var pauseBtnClass = ".cover-player--controls__pause";
+      var fwdBtnClass = ".cover-player--controls__fwd";
+      var bkwdBtnClass = ".cover-player--controls__bkwd";
+      var controlsContainerClass = ".cover-player--controls";
+      var $controlsContainer = $(controlsContainerClass);
+      var $playBtn = $(playBtnClass);
+      var $pauseBtn = $(pauseBtnClass);
+      var $fwdBtn = $(fwdBtnClass);
+      var $bkwdBtn = $(bkwdBtnClass);
 
-            setBindings();
+      var $jplayer = $(".player").jPlayer({
+        supplied: "mp3",
+        ended: onEnded,
+      });
 
-            function onPlayButtonClick(e) {
-                e.stopPropagation();
-                e.preventDefault();
-                var $this = $(this),
-                    href = $this.attr('href');
-                playTrack(href);
-                $('.song-control')
-                    .removeClass('pause-banner')
-                    .addClass('play-banner');
-                $this.removeClass('play-banner');
-                $this.addClass('pause-banner');
-                setBindings();
+      setBindings();
+
+      function onPlayButtonClick(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var $this = $(this);
+        var href = $this.attr("href");
+
+        playTrack(href);
+
+        $playBtn.removeClass("playing").addClass("hidden");
+        $controlsContainer.find(playBtnClass + ":first").removeClass("hidden");
+        $fwdBtn.addClass("hidden");
+        $bkwdBtn.addClass("hidden");
+
+        $this.addClass("hidden").addClass("playing");
+
+        $this
+          .closest(controlsContainerClass)
+          .find(pauseBtnClass)
+          .removeClass("hidden");
+
+        $this
+          .closest($controlsContainer)
+          .find(bkwdBtnClass)
+          .removeClass("hidden");
+        $this
+          .closest($controlsContainer)
+          .find(fwdBtnClass)
+          .removeClass("hidden");
+
+        setBindings();
+      }
+
+      function onPauseButtonClick(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var $this = $(this);
+        $jplayer.jPlayer("pause");
+        $fwdBtn.addClass("hidden");
+        $bkwdBtn.addClass("hidden");
+        $this.addClass("hidden");
+        $this
+          .closest(controlsContainerClass)
+          .find(".playing")
+          .removeClass("hidden");
+
+        setBindings();
+        $(".jp-audio").removeClass("is-playing");
+      }
+
+      function onEnded() {
+        var $nextPlayBtn = $(pauseBtnClass)
+          .closest(controlsContainerClass)
+          .find(".playing")
+          .next();
+        if (!$nextPlayBtn) return;
+
+        var href = $nextPlayBtn.attr("href");
+
+        playTrack(href);
+
+        $playBtn.removeClass("playing");
+
+        $nextPlayBtn.addClass("playing");
+
+        setBindings();
+      }
+
+      function setBindings() {
+        $(pauseBtnClass).off().on("click", onPauseButtonClick);
+        $(playBtnClass).off().on("click", onPlayButtonClick);
+      }
+
+      function playTrack(href) {
+        $jplayer
+          .jPlayer("setMedia", {
+            mp3: href,
+          })
+          .jPlayer("play");
+        $(".jp-audio").addClass("is-playing");
+      }
+    })();
+
+    +(function setUpCarousel() {
+      $(".slick-carousel").slick({
+        centerMode: true,
+        centerPadding: "60px",
+        slidesToShow: 3,
+        focusOnSelect: true,
+        arrows: false,
+        speed: 1000,
+        infinite: true,
+        initialSlide: 0,
+        responsive: [
+          {
+            breakpoint: 1200,
+            settings: {
+              arrows: false,
+              centerMode: true,
+              centerPadding: "40px",
+              slidesToShow: 1,
+              mobileFirst: true,
+              variableWidth: true,
+              variableHeight: true,
+              initialSlide: 1,
+            },
+          },
+        ],
+      });
+    })();
+
+    +(function getUpcomingEvents() {
+      const url =
+        "https://api.bandsintown.com/artists/Grizzly%20Derringer/events.json?api_version=2.0&app_id=js_grizzlyderringer.com&extended=true&widget_version=1.5.2&callback=bit_jsonp1484343130858";
+      $.get(
+        url,
+        function (data) {
+          if (!data.length) return;
+
+          var html = "";
+          for (var i = 0; i < data.length; i++) {
+            const show = data[i];
+            const venue = show.venue;
+            const datetime = new Date(show.datetime);
+            const month = [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec",
+            ][datetime.getMonth()];
+            const date = datetime.getDate();
+            html += "<tr>";
+            html += "<td>";
+            html += month + " " + date + " - " + venue.name;
+            html += "</br>";
+            html += "<strong>" + show.formatted_location + "</strong>";
+            html += "</td><td>";
+            html +=
+              '<a href="' +
+              show.facebook_rsvp_url +
+              '" class="btn btn-success btn-xs">RSVP</a>';
+            html += "</td></tr>";
+            if (data.length > 1) {
+              html += '<tr><td colspan="2"><hr/></td></tr>';
             }
+          }
+          $("#upcoming_shows").html(html);
+        },
+        "jsonp"
+      );
+    })();
 
-            function onPauseButtonClick(e) {
-                e.stopPropagation();
-                e.preventDefault();
-                var $this = $(this);
-                $jplayer.jPlayer('pause');
-                $this.removeClass('pause-banner')
-                    .addClass('play-banner');
-                setBindings();
-                $('.jp-audio').removeClass('is-playing');
-            }
-
-            function onEnded() {
-                // var $next_tr = $('.glyphicon-pause').closest('tr').next('tr'),
-                //     $next_playbutton = $next_tr.find('.glyphicon-play');
-                // $('.playlist-row').removeClass('playing');
-                // $next_tr.addClass('playing');
-                // $('.song-control')
-                //     .removeClass('glyphicon-pause')
-                //     .addClass('glyphicon-play');
-                // if ($next_playbutton) {
-                //     var href = $next_playbutton.attr('href');
-                //     playTrack(href);
-                //     $next_playbutton.removeClass('glyphicon-play');
-                //     $next_playbutton.addClass('glyphicon-pause');
-                // }
-                setBindings();
-            }
-
-            function setBindings() {
-                $('.song-control.pause-banner').off().on('click', onPauseButtonClick);
-                $('.song-control.play-banner').off().on('click', onPlayButtonClick);
-            }
-
-            function playTrack(href) {
-                $jplayer.jPlayer('setMedia', {
-                    mp3: href
-                }).jPlayer('play');
-                $('.jp-audio').addClass('is-playing');
-            }
-        }();
-
-        +function setUpCarousel() {
-            $('.slick-carousel').slick({
-                centerMode: true,
-                centerPadding: '60px',
-                slidesToShow: 3,
-                focusOnSelect: true,
-                arrows: false,
-                speed: 1000,
-                infinite: true,
-                initialSlide: 0,
-                responsive: [
-                    {
-                        breakpoint: 1200,
-                        settings: {
-                            arrows: false,
-                            centerMode: true,
-                            centerPadding: '40px',
-                            slidesToShow: 1,
-                            mobileFirst: true,
-                            variableWidth: true,
-                            variableHeight: true,
-                            initialSlide: 1
-                        }
-                    }
-                ]
-            });
-        }();
-
-        +function getUpcomingEvents() {
-            const url = 'https://api.bandsintown.com/artists/Grizzly%20Derringer/events.json?api_version=2.0&app_id=js_grizzlyderringer.com&extended=true&widget_version=1.5.2&callback=bit_jsonp1484343130858';
-            $.get(url, function (data) {
-                if (!data.length) return;
-
-                var html = '';
-                for (var i = 0; i < data.length; i++) {
-                    const show = data[i];
-                    const venue = show.venue;
-                    const datetime = new Date(show.datetime);
-                    const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][datetime.getMonth()];
-                    const date = datetime.getDate();
-                    html += '<tr>';
-                    html += '<td>'
-                    html += month + ' ' + date + ' - ' + venue.name;
-                    html += '</br>';
-                    html += '<strong>' + show.formatted_location + '</strong>';
-                    html += '</td><td>';
-                    html += '<a href="' + show.facebook_rsvp_url + '" class="btn btn-success btn-xs">RSVP</a>';
-                    html += '</td></tr>';
-                    if (data.length > 1) {
-                        html += '<tr><td colspan="2"><hr/></td></tr>'
-                    }
-                }
-                $('#upcoming_shows').html(html);
-            }, 'jsonp');
-        }();
-
-        +function setUpNewsFeedLinks() {
-            $('.scroll-to-link').on('click', function (e) {
-                e.preventDefault();
-                const isHome = window.location.pathname === '{{ "/" | prepend: site.baseurl }}';
-                if (!isHome) {
-                    return window.location = '{{ "/#news" | prepend: site.baseurl }}';
-                }
-                const target = $(this).attr('href')
-                $("html, body").animate({scrollTop: $(target).offset().top - 50}, 750);
-            });
-        }();
-    });
-
+    +(function setUpNewsFeedLinks() {
+      $(".scroll-to-link").on("click", function (e) {
+        e.preventDefault();
+        const isHome =
+          window.location.pathname === '{{ "/" | prepend: site.baseurl }}';
+        if (!isHome) {
+          return (window.location = '{{ "/#news" | prepend: site.baseurl }}');
+        }
+        const target = $(this).attr("href");
+        $("html, body").animate(
+          { scrollTop: $(target).offset().top - 50 },
+          750
+        );
+      });
+    })();
+  });
 </script>
+

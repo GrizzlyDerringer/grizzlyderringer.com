@@ -18,74 +18,85 @@
   height: 300px;
   margin: auto;
   display: flex;
-  align-content: center;
-  justify-content: center;
+  align-content: bottom;
+  justify-content: flex-end;
   vertical-align: middle;
-
-  .play-banner, .pause-banner {
-    background: rgba(0, 0, 0, 0.65);
-    color: #FFFFFA;
-    margin: auto;
-    border: solid 2px #FFFFFA;
-    border-radius: 50%;
-    height: 50px;
-    width: 50px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    font-size: 1.75em;
-  }
-
-  .play-banner {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .5s ease;
-    -webkit-transition: opacity .5s ease;
-    .fa-pause {
-      display: none;
-    }
-
-    .fa-play {
-      display: inline-block;
-    }
-  }
-
-  .pause-banner {
-    .fa-pause {
-      display: inline-block;
-    }
-
-    .fa-play {
-      display: none;
-    }
-  }
+  flex-direction: column;
 
   &:hover {
-    .play-banner {
+    .cover-player--controls {
       visibility: visible;
       opacity: 1;
     }
   }
 
-  .fa-play, .fa-pause {
-    color: $offwhite;
-    font-size: 1em;
+  .cover-player {
     margin: auto;
-  }
+    &--controls {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease;
+      display: flex;
+      color: $offwhite;
 
-  .fa-play {
-    position: relative;
-    left: 3px;
+      &__bkwd,
+      &__fwd,
+      &__play,
+      &__pause {
+        background: rgba(0, 0, 0, 0.65);
+        color: $offwhite;
+        margin: auto;
+        border: solid 2px $offwhite;
+        border-radius: 50%;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        &.disabled {
+          color: rgba(255, 255, 255, 0.45);
+        }
+      }
+
+      &__play,
+      &__pause {
+        font-size: 1.75em;
+        height: 50px;
+        width: 50px;
+        margin: auto 15px;
+        .fa-play,
+        .fa-pause {
+          font-size: 1em;
+          margin: auto;
+        }
+
+        .fa-play {
+          position: relative;
+          left: 3px;
+        }
+      }
+
+      &__bkwd,
+      &__fwd {
+        font-size: 1.25em;
+        height: 35px;
+        width: 35px;
+        .fa-step-forward,
+        .fa-step-backward {
+          margin: auto;
+        }
+      }
+    }
   }
 }
 
 .homepage-slide-great-divide .album-cover-container {
-  background: transparent url("../assets/img/the-great-divide-cover.jpg") no-repeat center center;
+  background: transparent url("../assets/img/the-great-divide-cover.jpg")
+    no-repeat center center;
   background-size: cover;
 }
 
 .homepage-slide-american-dream .album-cover-container {
-  background: transparent url("../assets/img/american_dream_cover.jpg") no-repeat center center;
+  background: transparent url("../assets/img/american_dream_cover.jpg")
+    no-repeat center center;
   background-size: contain;
 }
 
