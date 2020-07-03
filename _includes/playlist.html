@@ -1,19 +1,13 @@
 <div class="cover-player">
   <!--controls-->
   <div class="cover-player--controls">
-    <a href="#" class="cover-player--controls__bkwd hidden disabled">
+    <a href="#" class="cover-player--controls__bkwd hidden">
       <i class="fa fa-step-backward" aria-hidden="true"></i>
     </a>
 
-    {% for song in include.songs %}
-
-    <a
-      class="cover-player--controls__play {% if forloop.index != 1 %}hidden{% endif %}"
-      href="{{ song.url }}"
-    >
+    <a class="cover-player--controls__play" href="#">
       <i class="fa fa-play" aria-hidden="true"></i>
     </a>
-    {% endfor %}
 
     <a class="cover-player--controls__pause hidden" href="#">
       <i class="fa fa-pause" aria-hidden="true"></i>

@@ -1,17 +1,17 @@
 <div class="slick-carousel">
     <div class="homepage-slide homepage-slide-american-dream">
-        <div class="album-cover-container">
-          {% include playlist.html songs=site.data.playlist.songs %}
+        <div data-playlist-id="american_dream" class="album-cover-container">
+          {% include playlist.html %}
         </div>
     </div>
     <div class="homepage-slide homepage-slide-great-divide">
-        <div class="album-cover-container">
-          {% include playlist.html songs=site.data.great-divide-playlist.songs %}
+      <div data-playlist-id="great_divide" class="album-cover-container">
+          {% include playlist.html %}
         </div>
     </div>
     <div class="homepage-slide homepage-slide-grizzly-derringer">
-        <div class="album-cover-container">
-          {% include playlist.html songs=site.data.gd-playlist.songs %}
+      <div data-playlist-id="grizzly_derringer" class="album-cover-container">
+          {% include playlist.html %}
         </div>
     </div>
 </div>

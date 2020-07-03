@@ -18,17 +18,115 @@
     "use strict";
 
     +(function setUpPlayer() {
+      var playlists = {
+        grizzly_derringer: {
+          trackIndex: 0,
+          tracks: [
+            {
+              title: "BMF",
+              duration: "4:31",
+              url:
+                "https://grizzlyderringer.s3.amazonaws.com/grizzly_derringer/01+BMF.mp3",
+            },
+            {
+              title: "Golden Place",
+              duration: "3:31",
+              url:
+                "https://grizzlyderringer.s3.amazonaws.com/grizzly_derringer/02+Golden+Place.mp3",
+            },
+            {
+              title: "Transmissions",
+              duration: "3:34",
+              url:
+                "https://grizzlyderringer.s3.amazonaws.com/grizzly_derringer/03+Transmissions.mp3",
+            },
+            {
+              title: "Nothing Again",
+              duration: "3:44",
+              url:
+                "https://grizzlyderringer.s3.amazonaws.com/grizzly_derringer/04+Nothing+Again.mp3",
+            },
+            {
+              title: "H.O.T.P.B",
+              duration: "3:09",
+              url:
+                "https://grizzlyderringer.s3.amazonaws.com/grizzly_derringer/05+House+Of+The+Pissing+Bum.mp3",
+            },
+            {
+              title: "Loneliest Coast",
+              duration: "4:13",
+              url:
+                "https://grizzlyderringer.s3.amazonaws.com/grizzly_derringer/06+Loneliest+Coast.mp3",
+            },
+            {
+              title: "Mexicali",
+              duration: "4:13",
+              url:
+                "https://grizzlyderringer.s3.amazonaws.com/grizzly_derringer/07+Mexicali.mp3",
+            },
+          ],
+        },
+        american_dream: {
+          trackIndex: 0,
+          tracks: [
+            {
+              title: "Tax and the Man",
+              duration: "4:31",
+              url:
+                "https://grizzlyderringer.s3.amazonaws.com/Tax_and_the_Man.mp3",
+            },
+            {
+              title: "Sometimes",
+              duration: "3:31",
+              url: "https://grizzlyderringer.s3.amazonaws.com/Sometimes.mp3",
+            },
+            {
+              title: "Tick Tick Tock",
+              duration: "3:34",
+              url:
+                "https://grizzlyderringer.s3.amazonaws.com/Tick_Tick_Tock.mp3",
+            },
+            {
+              title: "Red West",
+              duration: "3:44",
+              url: "https://grizzlyderringer.s3.amazonaws.com/Red_West.mp3",
+            },
+            {
+              title: "El Camino",
+              duration: "3:09",
+              url: "https://grizzlyderringer.s3.amazonaws.com/El_Camino.mp3",
+            },
+            {
+              title: "American Dream",
+              duration: "4:13",
+              url:
+                "https://grizzlyderringer.s3.amazonaws.com/American_Dream.mp3",
+            },
+          ],
+        },
+        great_divide: {
+          trackIndex: 0,
+          tracks: [
+            {
+              title: "The Great Divide",
+              duration: "5:20",
+              url:
+                "https://grizzlyderringer.s3-us-west-1.amazonaws.com/the-great-divide.mp3",
+            },
+          ],
+        },
+      };
+      var activePlaylistId = "";
       var playBtnClass = ".cover-player--controls__play";
       var pauseBtnClass = ".cover-player--controls__pause";
       var fwdBtnClass = ".cover-player--controls__fwd";
       var bkwdBtnClass = ".cover-player--controls__bkwd";
-      var controlsContainerClass = ".cover-player--controls";
+      var controlsContainerClass = ".album-cover-container";
       var $controlsContainer = $(controlsContainerClass);
       var $playBtn = $(playBtnClass);
       var $pauseBtn = $(pauseBtnClass);
       var $fwdBtn = $(fwdBtnClass);
       var $bkwdBtn = $(bkwdBtnClass);
-
       var $jplayer = $(".player").jPlayer({
         supplied: "mp3",
         ended: onEnded,
@@ -36,76 +134,114 @@
 
       setBindings();
 
+      function setActivePlaylist(id) {
+        activePlaylistId = id;
+      }
+
+      function getActivePlaylist() {
+        return activePlaylistId.length ? playlists[activePlaylistId] : null;
+      }
+
+      function getTrack(playlist) {
+        return playlist.tracks[playlist.trackIndex].url;
+      }
+
+      function activePlaylistIsAtBeginning() {
+        var playlist = getActivePlaylist()
+        return playlist.trackIndex === 0;
+      }
+
+      function activePlaylistIsAtEnd() {
+        var playlist = getActivePlaylist()
+        return playlist.trackIndex >= playlist.tracks.length - 1;
+      }
+
+      function setPlayingUI($ctx) {
+        var $container = $ctx.closest(controlsContainerClass);
+        var playlist = getActivePlaylist();
+        $playBtn.removeClass("hidden");
+        $pauseBtn.addClass("hidden");
+        $fwdBtn.addClass("hidden").removeClass("disabled");
+        $bkwdBtn.addClass("hidden").removeClass("disabled");
+        $container.find(playBtnClass).addClass("hidden");
+        $container.find(pauseBtnClass).removeClass("hidden");
+        $container.find(bkwdBtnClass).removeClass("hidden");
+        $container.find(fwdBtnClass).removeClass("hidden");
+
+        if (activePlaylistIsAtBeginning()) {
+          $container.find(bkwdBtnClass).addClass("disabled");
+        }
+
+        if (activePlaylistIsAtEnd()) {
+          $container.find(fwdBtnClass).addClass("disabled");
+        }
+      }
+
+      function setPausedUI() {
+        $fwdBtn.addClass("hidden");
+        $bkwdBtn.addClass("hidden");
+        $pauseBtn.addClass("hidden");
+        $playBtn.removeClass("hidden");
+      }
+
       function onPlayButtonClick(e) {
         e.stopPropagation();
         e.preventDefault();
         var $this = $(this);
-        var href = $this.attr("href");
-
-        playTrack(href);
-
-        $playBtn.removeClass("playing").addClass("hidden");
-        $controlsContainer.find(playBtnClass + ":first").removeClass("hidden");
-        $fwdBtn.addClass("hidden");
-        $bkwdBtn.addClass("hidden");
-
-        $this.addClass("hidden").addClass("playing");
-
-        $this
-          .closest(controlsContainerClass)
-          .find(pauseBtnClass)
-          .removeClass("hidden");
-
-        $this
-          .closest($controlsContainer)
-          .find(bkwdBtnClass)
-          .removeClass("hidden");
-        $this
-          .closest($controlsContainer)
-          .find(fwdBtnClass)
-          .removeClass("hidden");
-
+        var $container = $this.closest(controlsContainerClass);
+        setActivePlaylist($container.attr("data-playlist-id"));
+        playTrack(getTrack(getActivePlaylist()));
+        setPlayingUI($this);
         setBindings();
       }
 
       function onPauseButtonClick(e) {
         e.stopPropagation();
         e.preventDefault();
-        var $this = $(this);
         $jplayer.jPlayer("pause");
-        $fwdBtn.addClass("hidden");
-        $bkwdBtn.addClass("hidden");
-        $this.addClass("hidden");
-        $this
-          .closest(controlsContainerClass)
-          .find(".playing")
-          .removeClass("hidden");
-
+        setPausedUI();
         setBindings();
-        $(".jp-audio").removeClass("is-playing");
+      }
+
+      function onNextButtonClick(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        goToNext();
+        setPlayingUI($(this));
+      }
+
+      function onPrevButtonClick(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        goToPrev();
+        setPlayingUI($(this));
+      }
+
+      function goToNext() {
+        var playlist = getActivePlaylist();
+        if (activePlaylistIsAtEnd()) return;
+        playlist.trackIndex++;
+        playTrack(getTrack(playlist));
+        setBindings();
+      }
+
+      function goToPrev() {
+        if (activePlaylistIsAtBeginning()) return;
+        var playlist = getActivePlaylist();
+        playlist.trackIndex--;
+        playTrack(getTrack(playlist));
+        setBindings();
       }
 
       function onEnded() {
-        var $nextPlayBtn = $(pauseBtnClass)
-          .closest(controlsContainerClass)
-          .find(".playing")
-          .next();
-        if (!$nextPlayBtn) return;
-
-        var href = $nextPlayBtn.attr("href");
-
-        playTrack(href);
-
-        $playBtn.removeClass("playing");
-
-        $nextPlayBtn.addClass("playing");
-
-        setBindings();
+        goToNext();
       }
 
       function setBindings() {
-        $(pauseBtnClass).off().on("click", onPauseButtonClick);
-        $(playBtnClass).off().on("click", onPlayButtonClick);
+        $pauseBtn.off().on("click", onPauseButtonClick);
+        $playBtn.off().on("click", onPlayButtonClick);
+        $fwdBtn.off().on("click", onNextButtonClick);
+        $bkwdBtn.off().on("click", onPrevButtonClick);
       }
 
       function playTrack(href) {
@@ -114,7 +250,6 @@
             mp3: href,
           })
           .jPlayer("play");
-        $(".jp-audio").addClass("is-playing");
       }
     })();
 
@@ -212,4 +347,3 @@
     })();
   });
 </script>
-
