@@ -1,24 +1,20 @@
-<div class="playlist">
-    <table class="table">
-        <thead>
-        <tr>
-            <th></th>
-            <th>Title</th>
-            <th>Time</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for song in include.songs %}
-        <tr class="playlist-row">
-            <td>{{ forloop.index }}.</td>
-            <td>{{ song.title }}</td>
-            <td>{{ song.duration }}</td>
-            <td>
-                <a href="{{ song.url }}" target="_blank" class="glyphicon glyphicon-play song-control"></a>
-            </td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<div class="cover-player">
+  <!--controls-->
+  <div class="cover-player--controls">
+    <a href="#" class="cover-player--controls__bkwd hidden">
+      <i class="fa fa-step-backward" aria-hidden="true"></i>
+    </a>
+
+    <a class="cover-player--controls__play" href="#">
+      <i class="fa fa-play" aria-hidden="true"></i>
+    </a>
+
+    <a class="cover-player--controls__pause hidden" href="#">
+      <i class="fa fa-pause" aria-hidden="true"></i>
+    </a>
+
+    <a href="#" class="cover-player--controls__fwd hidden">
+      <i class="fa fa-step-forward" aria-hidden="true"></i>
+    </a>
+  </div>
 </div>
