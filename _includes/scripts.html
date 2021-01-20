@@ -115,6 +115,31 @@
             },
           ],
         },
+        aloha: {
+          trackIndex: 0,
+          tracks: [
+            {
+              title: "Waves Between the Lanes",
+              duration: "4:27",
+              url: "https://grizzlyderringer.s3-us-west-1.amazonaws.com/Waves+Between+the+Lanes.mp3"
+            },
+            {
+              title: "Brosis",
+              duration: "3:37",
+              url: "https://grizzlyderringer.s3-us-west-1.amazonaws.com/Brosis.mp3"
+            },
+            {
+              title: "Long Live the King",
+              duration: "4:32",
+              url: "https://grizzlyderringer.s3-us-west-1.amazonaws.com/Long+Live+the+King.mp3"
+            },
+            {
+              title: "Downside Up",
+              duration: "6:30",
+              url: "https://grizzlyderringer.s3-us-west-1.amazonaws.com/Downside+Up.mp3"
+            }
+          ]
+        }
       };
       var activePlaylistId = "";
       var playBtnClass = ".cover-player--controls__play";
@@ -255,9 +280,9 @@
 
     +(function setUpCarousel() {
       $(".slick-carousel").slick({
-        centerMode: true,
+        centerMode: false,
         centerPadding: "60px",
-        slidesToShow: 3,
+        slidesToShow: 4,
         focusOnSelect: true,
         arrows: false,
         speed: 1000,
